@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Login - Controle Financeiro</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="dark">
 
 <div class="login-box">
-  <h2>Login</h2>
 
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="senha" placeholder="Senha">
+  <h2>💰 Controle Financeiro</h2>
+  <p class="subtitle">Entre na sua conta</p>
 
-  <button onclick="login()">Entrar</button>
-  <button onclick="cadastrar()">Criar conta</button>
+  <input type="email" id="email" placeholder="Seu email" required>
+  <input type="password" id="senha" placeholder="Sua senha" required>
+
+  <!-- BOTÕES -->
+  <button class="btn-add" onclick="login()">Entrar</button>
+  <button class="btn-secundario" onclick="cadastrar()">Criar conta</button>
+
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

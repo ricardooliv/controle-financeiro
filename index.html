@@ -1,47 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Controle Financeiro</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00c853">
 </head>
+
 <body class="dark">
 
 <div class="container">
- <div class="topo">
-  <h1>💰 Controle Financeiro</h1>
-  <button onclick="logout()" class="logout">Sair</button>
-</div>
 
+  <!-- TOPO -->
+  <div class="topo">
+    <h1>💰 Controle Financeiro</h1>
+    <button onclick="logout()" class="logout">Sair</button>
+  </div>
+
+  <!-- RESUMO -->
   <div class="resumo">
     <div class="card receita">
       <h3>Receitas</h3>
-      <p id="totalReceitas">R$ 0</p>
+      <p id="totalReceitas">R$ 0,00</p>
     </div>
 
     <div class="card despesa">
       <h3>Despesas</h3>
-      <p id="totalDespesas">R$ 0</p>
+      <p id="totalDespesas">R$ 0,00</p>
     </div>
 
     <div class="card saldo">
       <h3>Saldo</h3>
-      <p id="saldo">R$ 0</p>
+      <p id="saldo">R$ 0,00</p>
     </div>
   </div>
 
+  <!-- FORM -->
   <div class="form">
     <input type="text" id="descricao" placeholder="Descrição">
     <input type="number" id="valor" placeholder="Valor">
 
+<select id="categoria">
+  <option value="">Categoria</option>
+  <option value="comida">🍔 Comida</option>
+  <option value="transporte">🚗 Transporte</option>
+  <option value="contas">📄 Contas</option>
+  <option value="lazer">🎮 Lazer</option>
+  <option value="outros">📦 Outros</option>
+</select>
+
     <div class="tipo">
-    <button id="btnReceita" onclick="selecionarTipo('receita')">💰 Receita</button>
-    <button id="btnDespesa" onclick="selecionarTipo('despesa')">💸 Despesa</button>
+      <button id="btnReceita" onclick="selecionarTipo('receita')">
+        💰 Receita
+      </button>
+
+      <button id="btnDespesa" onclick="selecionarTipo('despesa')">
+        💸 Despesa
+      </button>
     </div>
-    <button onclick="adicionar()">Adicionar</button>
+
+    <button class="btn-add" onclick="adicionar()">
+      Adicionar
+    </button>
   </div>
 
-  <ul id="lista"></ul>
+  <!-- LISTA DE TRANSAÇÕES -->
+  <div class="lista-container">
+    <h2>Transações</h2>
+    <ul id="lista"></ul>
+  </div>
+
 </div>
 
 <!-- FIREBASE -->
@@ -51,6 +81,11 @@
 
 <script src="js/firebase.js"></script>
 <script src="js/app.js"></script>
-
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js")
+      .then(() => console.log("App pronto pra instalar 🚀"));
+  }
+</script>
 </body>
 </html>
